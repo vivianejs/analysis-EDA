@@ -1,3 +1,5 @@
+# LICENSE (MIT)
+cat > LICENSE << 'EOF'
 MIT License
 
 Copyright (c) 2025 vivianejs
@@ -19,20 +21,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-# .gitignore
-cat > .gitignore << 'EOF'
-# Python
-_pycache_/
-*.pyc
-.venv/
-.env
 
-# Dados/modelos
-data/*
-!data/.gitkeep
-models/*
-!models/.gitkeep
-
-# Jupyter
-.ipynb_checkpoints/
-EOF
