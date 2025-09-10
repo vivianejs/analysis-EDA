@@ -1,17 +1,5 @@
-# .gitignore
-cat > .gitignore << 'EOF'
-# Python
+.venv/
 __pycache__/
 *.pyc
-.venv/
-.env
-
-# Dados/modelos
-data/*
-!data/.gitkeep
-models/*
-!models/.gitkeep
-
-# Jupyter
-.ipynb_checkpoints/
-EOF
+data/
+reports/
