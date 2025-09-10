@@ -1,0 +1,32 @@
+import joblib
+from src.analysis.train import train_genre_model, train_rating_model
+from src.analysis.preprocess import load_data, clean_data, encode_categorical
+
+# Carregar e limpar dados
+csv_path = 'data/movies.csv'
+df = load_data(csv_path)
+df = clean_data(df)
+
+# Treinar modelo de gênero
+df_genre = encode_categorical(df.copy(), ['genre'])
+Xg = df_genre.drop(columns=['genre'])
+yg = df_genre['genre']
+from sklearn.ensemble import RandomForestClassifier
+model_genre = RandomForestClassifier(n_estimators=100, random_state=42)
+model_genre.fit(Xg, yg)
+
+# Treinar modelo de rating
+Xr = df.drop(columns=['rating'])
+yr = df['rating']
+from sklearn.ensemble import RandomForestRegressor
+model_rating = RandomForestRegressor(n_estimators=100, random_state=42)
+model_rating.fit(Xr, yr)
+
+# Salvar todos os modelos em um único arquivo
+models = {
+    'genre_model': model_genre,
+    'rating_model': model_rating
+}
+
+joblib.dump(models, 'models/models.pkl')
+print("Arquivo models.pkl criado com sucesso em 'models/models.pkl'")
